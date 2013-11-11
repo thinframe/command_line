@@ -1,0 +1,6 @@
+#thinframe autocomplete gateway
+_thinframe()
+{
+    COMPREPLY=( $(thinframe compgen $(printf "%s " "${COMP_WORDS[@]}") --current=${COMP_CWORD}) )
+}
+complete -F _thinframe thinframe

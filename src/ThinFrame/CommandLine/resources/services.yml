@@ -1,0 +1,18 @@
+services:
+    thinframe.cli.commander:
+        class: 'ThinFrame\CommandLine\Commands\Commander'
+        tags:
+            -{ name: 'thinframe.cli.commander'}
+
+    thinframe.cli.simple_output_driver:
+        class: 'ThinFrame\CommandLine\IO\Drivers\SimpleOutputDriver'
+
+    thinframe.cli.bash_input_driver:
+        class: 'ThinFrame\CommandLine\IO\Drivers\BashInputDriver'
+
+    thinframe.cli.shortcodes_processor:
+        class: 'ThinFrame\Foundation\Helpers\ShortCodesProcessor'
+
+    thinframe.cli.shortcodes_output_driver:
+        class: 'ThinFrame\CommandLine\IO\Drivers\ShortCodesOutputDriver'
+        arguments: ['@thinframe.cli.shortcodes_processor']

@@ -1,0 +1,2 @@
+export THINFRAME_ENTRY_FILE=sandbox.php
+export THINFRAME_ENVIRONMENT=development

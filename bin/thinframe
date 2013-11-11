@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+command -v php > /dev/null 2>&1 && PHP=$(which php)
+
+if [ -z "$PHP" ];
+then
+	echo "PHP not found. Make sure PHP is installed and in your path"
+	exit 2
+fi
+
+CURRENT_DIR=$(pwd);
+THINFRAME_RC=/.thinframerc
+DIR_SEPARATOR=/
+
+function run {
+	if [ -r $CURRENT_DIR$THINFRAME_RC ];
+	then
+		source $CURRENT_DIR$THINFRAME_RC
+		cd $CURRENT_DIR
+		exec $PHP $CURRENT_DIR$DIR_SEPARATOR$THINFRAME_ENTRY_FILE $*
+	else
+		CURRENT_DIR="$(dirname "$CURRENT_DIR")"
+		if [ $CURRENT_DIR == "/" ];
+		then
+			if [ "$1" != "compgen" ];
+			then
+				echo "Your are not in a thinframe dir"
+			fi
+			exit 4
+		else
+			run $*
+		fi
+
+	fi
+}
+
+run $*
