@@ -6,4 +6,10 @@ WORKING_DIR=$PWD
 echo "Installing required bash scripts...."
 sudo cp $SOURCES_DIR/thinframe /usr/bin/thinframe -T
 sudo cp $SOURCES_DIR/completion /etc/bash_completion.d/thinframe -T
-cp $SOURCES_DIR/.thinframerc $WORKING_DIR/.thinframerc -T
+
+if [ -r $WORKING_DIR/.thinframerc ];
+then
+    echo "ThinFrameRC file already installed";
+else
+    cp $SOURCES_DIR/.thinframerc $WORKING_DIR/.thinframerc -T
+fi
