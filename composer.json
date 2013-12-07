@@ -18,10 +18,13 @@
         "php": ">=5.4.0",
         "thinframe/foundation": "dev-master"
     },
+    "require-dev": {
+
+    },
     "autoload": {
         "psr-0": {
             "": "src/"
         }
     },
-    "bin": ["bin/.thinframerc", "bin/install", "bin/completion", "bin/thinframe"]
+    "bin": ["bin/.thinframerc", "bin/thinframe-installer", "bin/thinframe-completion", "bin/thinframe"]
 }

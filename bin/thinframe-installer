@@ -5,7 +5,7 @@ SOURCES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 WORKING_DIR=$PWD
 echo "Installing required bash scripts...."
 sudo cp $SOURCES_DIR/thinframe /usr/bin/thinframe -T
-sudo cp $SOURCES_DIR/completion /etc/bash_completion.d/thinframe -T
+sudo cp $SOURCES_DIR/thinframe-completion /etc/bash_completion.d/thinframe -T
 
 if [ -r $WORKING_DIR/.thinframerc ];
 then
