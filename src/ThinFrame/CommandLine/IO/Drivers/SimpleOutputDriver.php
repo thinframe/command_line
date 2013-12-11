@@ -10,7 +10,6 @@
 namespace ThinFrame\CommandLine\IO\Drivers;
 
 use ThinFrame\CommandLine\IO\OutputDriverInterface;
-use ThinFrame\Foundation\Helpers\Strings\StringGenerator;
 
 /**
  * Class SimpleOutputDriver
@@ -34,6 +33,19 @@ class SimpleOutputDriver implements OutputDriverInterface
         } else {
             $output = STDOUT;
         }
-        fwrite($output, StringGenerator::interpolate($string, $variables));
+        fwrite($output, $this->interpolate($string, $variables));
+    }
+
+    /**
+     * Interpolate variables into string
+     *
+     * @param string $string
+     * @param array  $variables
+     */
+    private function interpolate($string, array $variables)
+    {
+        foreach ($variables as $key => $value) {
+            $string = str_replace('{' . $key . '}', $value, $string);
+        }
     }
 }

@@ -9,10 +9,10 @@
 
 namespace ThinFrame\CommandLine\Commands\Iterators;
 
+use Stringy\StaticStringy;
 use ThinFrame\CommandLine\ArgumentsContainer;
 use ThinFrame\CommandLine\Commands\AbstractCommand;
 use ThinFrame\CommandLine\Commands\AbstractCommandIterator;
-use ThinFrame\Foundation\Helpers\Strings\StringValidator;
 
 /**
  * Class CompletionIterator
@@ -81,7 +81,7 @@ class CompletionIterator extends AbstractCommandIterator
     {
         if (is_null($this->argumentsContainer->getArgumentAt($this->currentIndex + 2))) {
             echo $command->getArgument() . ' ';
-        } elseif (StringValidator::startsWith(
+        } elseif (StaticStringy::startsWith(
             $command->getArgument(),
             $this->argumentsContainer->getArgumentAt($this->currentIndex + 2)
         )

@@ -17,7 +17,6 @@ use ThinFrame\CommandLine\IO\Helpers\Bash;
 use ThinFrame\CommandLine\IO\Helpers\StringTransformer;
 use ThinFrame\CommandLine\IO\OutputDriverInterface;
 use ThinFrame\Foundation\Helpers\ShortCodesProcessor;
-use ThinFrame\Foundation\Helpers\Strings\StringGenerator;
 
 /**
  * Class ShortCodesOutputDriver
@@ -129,6 +128,19 @@ class ShortCodesOutputDriver implements OutputDriverInterface
         } else {
             $output = STDOUT;
         }
-        fwrite($output, $this->shortCodesProcessor->parseContent(StringGenerator::interpolate($string, $variables)));
+        fwrite($output, $this->shortCodesProcessor->parseContent($this->interpolate($string, $variables)));
+    }
+
+    /**
+     * Interpolate variables into string
+     *
+     * @param string $string
+     * @param array  $variables
+     */
+    private function interpolate($string, array $variables)
+    {
+        foreach ($variables as $key => $value) {
+            $string = str_replace('{' . $key . '}', $value, $string);
+        }
     }
 }
