@@ -41,11 +41,14 @@ class SimpleOutputDriver implements OutputDriverInterface
      *
      * @param string $string
      * @param array  $variables
+     *
+     * @return string
      */
     private function interpolate($string, array $variables)
     {
         foreach ($variables as $key => $value) {
             $string = str_replace('{' . $key . '}', $value, $string);
         }
+        return $string;
     }
 }
