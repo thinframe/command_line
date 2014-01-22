@@ -1,7 +1,7 @@
 <?php
 
 /**
- * /src/ThinFrame/CommandLine/Commands/AbstractCommandIterator.php
+ * /src/Commands/Commander.php
  *
  * @copyright 2013 Sorin Badea <sorin.badea91@gmail.com>
  * @license   MIT license (see the license file in the root directory)
@@ -23,7 +23,7 @@ abstract class AbstractCommandIterator
      * Visit a specific command
      *
      * @param AbstractCommand $command
-     * @param int             $depth
+     * @param int $depth
      */
     public function visit(AbstractCommand $command, $depth = 0)
     {
@@ -50,7 +50,7 @@ abstract class AbstractCommandIterator
      * Logic that will be executed when command is visited
      *
      * @param AbstractCommand $command
-     * @param int             $depth
+     * @param int $depth
      *
      * @return mixed
      */

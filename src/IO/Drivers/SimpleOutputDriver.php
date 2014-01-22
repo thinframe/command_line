@@ -1,7 +1,7 @@
 <?php
 
 /**
- * /src/ThinFrame/CommandLine/IO/Drivers/SimpleOutputDriver.php
+ * /src/IO/Drivers/SimpleOutputDriver.php
  *
  * @copyright 2013 Sorin Badea <sorin.badea91@gmail.com>
  * @license   MIT license (see the license file in the root directory)
@@ -49,6 +49,7 @@ class SimpleOutputDriver implements OutputDriverInterface
         foreach ($variables as $key => $value) {
             $string = str_replace('{' . $key . '}', $value, $string);
         }
+
         return $string;
     }
 }

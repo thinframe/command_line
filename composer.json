@@ -23,9 +23,14 @@
 
     },
     "autoload": {
-        "psr-0": {
-            "": "src/"
+        "psr-4": {
+            "ThinFrame\\CommandLine\\": "src/"
         }
     },
-    "bin": ["bin/.thinframerc", "bin/thinframe-installer", "bin/thinframe-completion", "bin/thinframe"]
+    "bin": [
+        "bin/.thinframerc",
+        "bin/thinframe-installer",
+        "bin/thinframe-completion",
+        "bin/thinframe"
+    ]
 }

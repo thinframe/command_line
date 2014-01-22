@@ -9,14 +9,27 @@ services:
         class: 'ThinFrame\CommandLine\ArgumentsContainer'
 
     thinframe.cli.simple_output_driver:
+        abstract: true
         class: 'ThinFrame\CommandLine\IO\Drivers\SimpleOutputDriver'
 
     thinframe.cli.bash_input_driver:
+        abstract: true
         class: 'ThinFrame\CommandLine\IO\Drivers\BashInputDriver'
+        arguments: ['@thinframe.cli.output_driver']
 
     thinframe.cli.shortcodes_processor:
         class: 'ThinFrame\Foundation\Helpers\ShortCodesProcessor'
 
     thinframe.cli.shortcodes_output_driver:
+        abstract: true
         class: 'ThinFrame\CommandLine\IO\Drivers\ShortCodesOutputDriver'
         arguments: ['@thinframe.cli.shortcodes_processor']
+
+    thinframe.cli.output_driver:
+        parent: 'thinframe.cli.shortcodes_output_driver'
+
+    thinframe.cli.input_driver:
+        parent: 'thinframe.cli.bash_input_driver'
+
+    test:
+        class: 'Test'

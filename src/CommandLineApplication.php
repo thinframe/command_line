@@ -1,7 +1,7 @@
 <?php
 
 /**
- * /src/ThinFrame/CommandLine/CommandLineApplication.php
+ * /src/CommandLineApplication.php
  *
  * @copyright 2013 Sorin Badea <sorin.badea91@gmail.com>
  * @license   MIT license (see the license file in the root directory)
@@ -10,6 +10,7 @@
 namespace ThinFrame\CommandLine;
 
 use ThinFrame\Applications\AbstractApplication;
+use ThinFrame\Applications\DependencyInjection\AwareDefinition;
 use ThinFrame\Applications\DependencyInjection\ContainerConfigurator;
 use ThinFrame\CommandLine\DependencyInjection\CommandsCompilerPass;
 
@@ -31,6 +32,21 @@ class CommandLineApplication extends AbstractApplication
     public function initializeConfigurator(ContainerConfigurator $configurator)
     {
         $configurator->addCompilerPass(new CommandsCompilerPass());
+
+        $configurator->addAwareDefinition(
+            new AwareDefinition(
+                '\ThinFrame\CommandLine\DependencyInjection\OutputDriverAwareTrait',
+                'setOutputDriver',
+                'thinframe.cli.output_driver'
+            )
+        );
+        $configurator->addAwareDefinition(
+            new AwareDefinition(
+                '\ThinFrame\CommandLine\DependencyInjection\InputDriverAwareTrait',
+                'setInputDriver',
+                'thinframe.cli.input_driver'
+            )
+        );
     }
 
     /**
