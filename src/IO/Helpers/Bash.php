@@ -49,8 +49,8 @@ class Bash
         preg_match_all("/rows.([0-9]+);.columns.([0-9]+);/", strtolower(exec('stty -a |grep columns')), $output);
         if (sizeof($output) == 3) {
             return array(
-                "height" => @$output[1][0],
-                "width"  => @$output[2][0]
+                "height" => isset($output[1][0]) ? $output[1][0] : 100,
+                "width"  => isset($output[2][0]) ? $output[2][0] : 100
             );
         } else {
             return array(

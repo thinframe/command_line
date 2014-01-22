@@ -56,6 +56,9 @@ class ShortCodesOutputDriver implements OutputDriverInterface
         $context->shortCodesProcessor->registerShortCode('format', $handler);
         $context->shortCodesProcessor->registerShortCode('center', $handler);
         $context->shortCodesProcessor->registerShortCode('sideways', $handler);
+        $context->shortCodesProcessor->registerShortCode('success', $handler);
+        $context->shortCodesProcessor->registerShortCode('error', $handler);
+        $context->shortCodesProcessor->registerShortCode('info', $handler);
     }
 
     /**
@@ -108,6 +111,25 @@ class ShortCodesOutputDriver implements OutputDriverInterface
                     str_repeat(" ", $sizes['width'] - strlen(Bash::removeStyles($content)) + 6),
                     $content
                 );
+                break;
+            case "success":
+                $content = $processor->parseContent(
+                    '[format foreground="green" effects="bold" background="black"][sideways] ' .
+                    $content . '%MIDDLE%[/sideways][/format]'
+                );
+                break;
+            case "error":
+                $content = $processor->parseContent(
+                    '[format foreground="white" effects="bold" background="red"][sideways] ' .
+                    $content . '%MIDDLE%[/sideways][/format]'
+                );
+                break;
+            case "info":
+                $content = $processor->parseContent(
+                    '[format foreground="white" effects="bold" background="blue"][sideways] ' .
+                    $content . '%MIDDLE%[/sideways][/format]'
+                );
+                break;
         }
 
         return $content;
