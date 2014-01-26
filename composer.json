@@ -13,11 +13,11 @@
             "role": "Developer"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
         "php": ">=5.4.0",
-        "thinframe/foundation": "dev-master",
-        "thinframe/pcntl": "dev-master"
+        "thinframe/foundation": "@stable",
+        "thinframe/pcntl": "@stable"
     },
     "require-dev": {
 
@@ -32,5 +32,10 @@
         "bin/thinframe-installer",
         "bin/thinframe-completion",
         "bin/thinframe"
-    ]
+    ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.2-dev"
+        }
+    }
 }

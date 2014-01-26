@@ -2,6 +2,10 @@
 
 CLI support for PHP applications.
 
+[![Latest Stable Version](https://poser.pugx.org/thinframe/command_line/v/stable.png)](https://packagist.org/packages/thinframe/command_line)
+[![Latest Unstable Version](https://poser.pugx.org/thinframe/command_line/v/unstable.png)](https://packagist.org/packages/thinframe/command_line)
+[![License](https://poser.pugx.org/thinframe/command_line/license.png)](https://packagist.org/packages/thinframe/command_line)
+
 ##Features
 
 * Easy install via composer
