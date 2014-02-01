@@ -14,15 +14,16 @@ use ThinFrame\CommandLine\IO\InputDriverInterface;
 
 /**
  * Class InputDriverAwareTrait
+ *
  * @package ThinFrame\CommandLine\DependencyInjection
- * @since 0.2
+ * @since   0.2
  */
 trait InputDriverAwareTrait
 {
     /**
      * @var InputDriverInterface
      */
-    private $inputDriver;
+    protected $inputDriver;
 
     /**
      * Attach input driver to the
