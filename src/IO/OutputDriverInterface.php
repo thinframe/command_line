@@ -1,28 +1,40 @@
 <?php
 
-/**
- * /src/IO/OutputDriverInterface.php
- *
- * @copyright 2013 Sorin Badea <sorin.badea91@gmail.com>
- * @license   MIT license (see the license file in the root directory)
- */
-
 namespace ThinFrame\CommandLine\IO;
 
 /**
  * Interface OutputDriverInterface
  *
  * @package ThinFrame\CommandLine\IO
- * @since   0.2
+ * @since   0.3
  */
 interface OutputDriverInterface
 {
     /**
-     * Send output
+     * Write message to output
      *
-     * @param string $string
-     * @param array  $variables
-     * @param bool   $error
+     * @param string $message
+     * @param bool   $newLine
+     *
+     * @return $this
      */
-    public function send($string, array $variables = array(), $error = false);
+    public function write($message, $newLine = false);
+
+    /**
+     * Write message to output with new line at the end
+     *
+     * @param string $message
+     *
+     * @return $this
+     */
+    public function writeLine($message);
+
+    /**
+     * Set output formatter
+     *
+     * @param OutputFormatterInterface $outputDecorator
+     *
+     * @return $this
+     */
+    public function setFormatter(OutputFormatterInterface $outputDecorator = null);
 }

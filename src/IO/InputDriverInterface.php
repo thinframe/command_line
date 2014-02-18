@@ -1,53 +1,62 @@
 <?php
 
-/**
- * /src/IO/InputDriverInterface.php
- *
- * @copyright 2013 Sorin Badea <sorin.badea91@gmail.com>
- * @license   MIT license (see the license file in the root directory)
- */
-
 namespace ThinFrame\CommandLine\IO;
 
 /**
  * Interface InputDriverInterface
  *
  * @package ThinFrame\CommandLine\IO
- * @since   0.2
+ * @since   0.3
  */
 interface InputDriverInterface
 {
     /**
-     * Get user input
+     * Set arguments container
+     *
+     * @param ArgumentsContainerInterface $argumentsContainer
+     *
+     * @return $this
+     */
+    public function setArgumentsContainer(ArgumentsContainerInterface $argumentsContainer);
+
+    /**
+     * Get arguments container
+     *
+     * @return ArgumentsContainerInterface
+     */
+    public function getArgumentsContainer();
+
+    /**
+     * Read line
      *
      * @return string
      */
-    public function readPlain();
+    public function readLine();
 
     /**
-     * Get user password input
+     * Read password
      *
      * @return string
      */
     public function readPassword();
 
     /**
-     * Multi choice selection
+     * Read user choice
      *
-     * @param string $outputText
+     * @param        $question
      * @param array  $variants
-     * @param string $failMessage
+     * @param string $errorMessage
      *
      * @return string
      */
-    public function readChoice($outputText, array $variants, $failMessage = "Invalid input\n");
+    public function readChoice($question, array $variants, $errorMessage = 'Invalid input');
 
     /**
-     * Prompt user for something
+     * Prompt user for info
      *
-     * @param string $outputText
+     * @param string $question
      *
      * @return string
      */
-    public function prompt($outputText);
+    public function prompt($question);
 }
