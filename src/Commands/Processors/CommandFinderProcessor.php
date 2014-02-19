@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * src/Commands/Processors/CommandFinderProcessor.php
+ *
+ * @author    Sorin Badea <sorin.badea91@gmail.com>
+ * @license   MIT license (see the license file in the root directory)
+ */
+
 namespace ThinFrame\CommandLine\Commands\Processors;
 
 use ThinFrame\CommandLine\Commands\AbstractCommand;
