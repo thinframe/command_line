@@ -5,3 +5,7 @@ command_line:
         arguments_container_service: 'cli.abstract.arguments_container'
         output_formatters:
             - {service: 'cli.output_formatter.shortcodes'}
+    commands:
+        service: 'cli.commander'
+        parent_tag: 'cli.command'
+        child_tag: 'cli.child_command'

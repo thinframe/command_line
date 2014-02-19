@@ -15,6 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\DefinitionDecorator;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\DependencyInjection\Reference;
+use ThinFrame\Foundation\Exceptions\LogicException;
 
 /**
  * Class HybridExtension
@@ -35,6 +36,8 @@ class HybridExtension implements ExtensionInterface, CompilerPassInterface
      * @param ContainerBuilder $container
      *
      * @api
+     *
+     * @throws LogicException
      */
     public function process(ContainerBuilder $container)
     {
@@ -60,6 +63,28 @@ class HybridExtension implements ExtensionInterface, CompilerPassInterface
                 'addFormatter',
                 [new Reference($formatter['service'])]
             );
+        }
+
+        foreach ($container->findTaggedServiceIds($this->config['commands']['parent_tag']) as $serviceId => $tags) {
+            $container->getDefinition($this->config['commands']['service'])->addMethodCall(
+                'addCommand',
+                [new Reference($serviceId)]
+            );
+        }
+
+        foreach ($container->findTaggedServiceIds($this->config['commands']['child_tag']) as $serviceId => $tags) {
+            foreach ($tags as $tag) {
+                if (!isset($tag['parent'])) {
+                    throw new LogicException(
+                        'Missing parent attribute (' .
+                        $this->config['commands']['child_tag'] . ' tag) for service' . $serviceId
+                    );
+                }
+                $container->getDefinition($tags['parent'])->addMethodCall(
+                    'addChildCommand',
+                    [new Reference($serviceId)]
+                );
+            }
         }
     }
 
@@ -117,5 +142,4 @@ class HybridExtension implements ExtensionInterface, CompilerPassInterface
     {
         return 'command_line';
     }
-
 }

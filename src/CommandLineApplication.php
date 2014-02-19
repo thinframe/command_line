@@ -42,8 +42,13 @@ class CommandLineApplication extends AbstractApplication
      */
     protected function setConfiguration(ContainerConfigurator $configurator)
     {
-        $configurator->addResource('Resources/services/io.yml');
-        $configurator->addResource('Resources/services/config.yml');
+        $configurator->addResources(
+            [
+                'Resources/services/services.yml',
+                'Resources/services/config.yml'
+            ]
+        );
+
         $configurator->addExtension($hybridExtension = new HybridExtension());
         $configurator->addCompilerPass($hybridExtension);
     }

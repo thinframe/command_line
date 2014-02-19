@@ -17,6 +17,15 @@ services:
     cli.shortcodes_processor:
         class: 'ThinFrame\Foundation\Helpers\ShortCodesProcessor'
 
+    cli.commander:
+        class: 'ThinFrame\CommandLine\Commands\Commander'
+
+    cli.commands.compgen:
+        class: 'ThinFrame\CommandLine\Commands\CompgenCommand'
+        arguments: ['@cli.commander']
+        tags:
+            - { name: 'cli.command' }
+
     #concrete services
     cli.output_formatter.shortcodes:
         class: 'ThinFrame\CommandLine\IO\Formatters\ShortCodesFormatter'

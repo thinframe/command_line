@@ -33,16 +33,43 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-            ->arrayNode('io')->children()
-            ->scalarNode('output_driver_service')->defaultValue('cli.abstract.bash_output_driver')->end()
-            ->scalarNode('input_driver_service')->defaultValue('cli.abstract.bash_input_driver')->end()
-            ->scalarNode('arguments_container_service')->defaultValue('cli.abstract.arguments_container')->end()
-            ->arrayNode('output_formatters')->prototype('array')->children()->scalarNode('service')->isRequired()->end(
-            )->end()
-            ->end()
+                ->arrayNode('io')
+                    ->children()
+                        ->scalarNode('output_driver_service')
+                            ->defaultValue('cli.abstract.bash_output_driver')
+                        ->end()
+                        ->scalarNode('input_driver_service')
+                            ->defaultValue('cli.abstract.bash_input_driver')
+                        ->end()
+                        ->scalarNode('arguments_container_service')
+                            ->defaultValue('cli.abstract.arguments_container')
+                        ->end()
+                        ->arrayNode('output_formatters')
+                            ->prototype('array')
+                                ->children()
+                                    ->scalarNode('service')
+                                        ->isRequired()
+                                    ->end()
+                                ->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+                ->arrayNode('commands')
+                    ->children()
+                        ->scalarNode('service')
+                            ->defaultValue('cli.commander')
+                        ->end()
+                        ->scalarNode('parent_tag')
+                            ->defaultValue('cli.commander')
+                        ->end()
+                        ->scalarNode('child_tag')
+                            ->defaultValue('cli.child_command')
+                        ->end()
+                    ->end()
+                 ->end()
             ->end();
 
         return $treeBuilder;
     }
-
 }
