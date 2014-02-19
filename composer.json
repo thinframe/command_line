@@ -18,7 +18,7 @@
         "php": ">=5.4.0",
         "thinframe/foundation": "dev-develop",
         "thinframe/pcntl": "0.2.*",
-        "mjohnson/decoda": "6.*"
+        "thinframe/applications": "dev-develop"
     },
     "require-dev": {
 

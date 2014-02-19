@@ -1,0 +1,33 @@
+services:
+    #abstract services
+    cli.abstract.bash_output_driver:
+        class: 'ThinFrame\CommandLine\IO\Drivers\BashOutputDriver'
+        abstact: true
+
+    cli.abstract.bash_input_driver:
+        class: 'ThinFrame\CommandLine\IO\Drivers\BashInputDriver'
+        arguments: ['@cli.output_driver']
+        abstract: true
+
+    cli.abstract.arguments_container:
+        class: 'ThinFrame\CommandLine\IO\ArgumentsContainer'
+        factory_class: 'ThinFrame\CommandLine\IO\Helpers\ArgumentsContainerFactory'
+        factory_method: 'createFromServerArgv'
+
+    cli.shortcodes_processor:
+        class: 'ThinFrame\Foundation\Helpers\ShortCodesProcessor'
+
+    #concrete services
+    cli.output_formatter.shortcodes:
+        class: 'ThinFrame\CommandLine\IO\Formatters\ShortCodesFormatter'
+        arguments: ['@cli.shortcodes_processor']
+
+    cli.output_driver:
+        class: 'ThinFrame\CommandLine\IO\OutputDriverInterface'
+
+    cli.input_driver:
+        class: 'ThinFrame\CommandLine\IO\InputDriverInterface'
+
+    cli.arguments_container:
+        class: 'ThinFrame\CommandLine\IO\ArgumentsContainerInterface'
+

@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "e8f9e944c1206aa358d28d5367d02edb",
+    "hash": "0b5bda77f073422321aebc93666cdad5",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -53,52 +53,6 @@
                 "utils"
             ],
             "time": "2014-02-13 00:26:15"
-        },
-        {
-            "name": "mjohnson/decoda",
-            "version": "6.4.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/milesj/decoda.git",
-                "reference": "4f309e6b8634fa8c2c5b1b6db158b03c9973fe10"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/milesj/decoda/zipball/4f309e6b8634fa8c2c5b1b6db158b03c9973fe10",
-                "reference": "4f309e6b8634fa8c2c5b1b6db158b03c9973fe10",
-                "shasum": ""
-            },
-            "require": {
-                "ext-mbstring": "*",
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Decoda": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Miles Johnson",
-                    "homepage": "http://milesj.me"
-                }
-            ],
-            "description": "A lightweight lexical string parser for BBCode styled markup.",
-            "homepage": "http://milesj.me/code/php/decoda",
-            "keywords": [
-                "HOOK",
-                "bbcode",
-                "decoda",
-                "filter",
-                "markup",
-                "parser"
-            ],
-            "time": "2014-02-16 04:09:12"
         },
         {
             "name": "phpcollection/phpcollection",
@@ -408,16 +362,16 @@
         },
         {
             "name": "thinframe/applications",
-            "version": "v0.2.1",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thinframe/applications.git",
-                "reference": "a8885fcd095c36e538e21edfed3093d86c7f4b02"
+                "reference": "bffc51ad67fa0323a3449023b1279b27c23fb909"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thinframe/applications/zipball/a8885fcd095c36e538e21edfed3093d86c7f4b02",
-                "reference": "a8885fcd095c36e538e21edfed3093d86c7f4b02",
+                "url": "https://api.github.com/repos/thinframe/applications/zipball/bffc51ad67fa0323a3449023b1279b27c23fb909",
+                "reference": "bffc51ad67fa0323a3449023b1279b27c23fb909",
                 "shasum": ""
             },
             "require": {
@@ -425,9 +379,15 @@
                 "symfony/config": "@stable",
                 "symfony/dependency-injection": "@stable",
                 "symfony/yaml": "@stable",
-                "thinframe/foundation": "@stable"
+                "thinframe/foundation": "dev-develop"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.2-dev",
+                    "dev-develop": "0.3-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "ThinFrame\\Applications\\": "src/"
@@ -452,7 +412,7 @@
                 "ecosystem",
                 "thinframe"
             ],
-            "time": "2014-01-26 18:37:39"
+            "time": "2014-02-13 17:54:01"
         },
         {
             "name": "thinframe/events",
@@ -619,7 +579,8 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "thinframe/foundation": 20
+        "thinframe/foundation": 20,
+        "thinframe/applications": 20
     },
     "platform": {
         "php": ">=5.4.0"
