@@ -18,11 +18,15 @@ CLI support for PHP applications.
     * `[format foreground='red' background='white' effects='bold blink']Your text[/format]`
     * `[center]Your text[/center]`
     * `[sideways]Some service %MIDDLE% Running[/sideways]`
+* Check the `examples` folder for more details.
 
 ##Installation
 
 * Via composer: `composer require thinframe/command-line`
 * Via git: `git clone https://github.com/thinframe/command-line`
+
+To enable bash completion support, `thinframe` binary must by installed in your system bin folder. To do this, just execute `thinframe-installer` from your composer bin folder.
+
 
 ##Copyright
 
