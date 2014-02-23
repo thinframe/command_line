@@ -20,7 +20,7 @@ trait InputDriverAwareTrait
     /**
      * @var InputDriverInterface
      */
-    private $inputDriver;
+    protected $inputDriver;
 
     /**
      * Attach the input driver to the current class instance

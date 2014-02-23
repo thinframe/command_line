@@ -80,7 +80,7 @@ class HybridExtension implements ExtensionInterface, CompilerPassInterface
                         $this->config['commands']['child_tag'] . ' tag) for service' . $serviceId
                     );
                 }
-                $container->getDefinition($tags['parent'])->addMethodCall(
+                $container->getDefinition($tag['parent'])->addMethodCall(
                     'addChildCommand',
                     [new Reference($serviceId)]
                 );
