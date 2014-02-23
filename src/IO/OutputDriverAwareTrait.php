@@ -31,7 +31,7 @@ trait OutputDriverAwareTrait
      */
     public function setOutputDriver(OutputDriverInterface $outputDriver)
     {
-        $this->setOutputDriver($outputDriver);
+        $this->outputDriver = $outputDriver;
 
         return $this;
     }

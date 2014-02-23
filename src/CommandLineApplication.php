@@ -58,14 +58,16 @@ class CommandLineApplication extends AbstractApplication
             new TraitInjectionRule(
                 '\ThinFrame\CommandLine\IO\OutputDriverAwareTrait',
                 'cli.output_driver',
-                'setOutputDriver')
+                'setOutputDriver'
+            )
         );
 
         $configurator->addInjectionRule(
             new TraitInjectionRule(
                 '\ThinFrame\CommandLine\IO\InputDriverAwareTrait',
                 'cli.input_driver',
-                'setInputDriver')
+                'setInputDriver'
+            )
         );
 
         $configurator->addInjectionRule(
