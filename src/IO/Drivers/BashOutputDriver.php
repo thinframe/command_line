@@ -45,12 +45,12 @@ class BashOutputDriver implements OutputDriverInterface
      */
     public function write($message, $newLine = false, $error = false)
     {
+        $message .= ($newLine ? PHP_EOL : '');
+
         foreach ($this->outputFormatters as $formatter) {
             /* @var $formatter OutputFormatterInterface */
             $message = $formatter->format($message);
         }
-
-        $message .= ($newLine ? PHP_EOL : '');
 
         if ($error) {
             fwrite(STDERR, $message);

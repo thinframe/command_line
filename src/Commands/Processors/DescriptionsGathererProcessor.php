@@ -44,6 +44,8 @@ class DescriptionsGathererProcessor extends AbstractCommandProcessor
      */
     public function getDescriptions()
     {
+        ksort($this->descriptions);
+
         return $this->descriptions;
     }
 }
