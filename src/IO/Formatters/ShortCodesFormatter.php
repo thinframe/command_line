@@ -108,19 +108,19 @@ class ShortCodesFormatter implements OutputFormatterInterface
                 break;
             case "success":
                 $content = $processor->parseContent(
-                    '[format foreground="green" effects="bold" background="black"][sideways]  ' .
+                    '[format foreground="green" effects="bold" background="black"][sideways] ' .
                     $content . '%MIDDLE%[/sideways][/format]'
                 );
                 break;
             case "error":
                 $content = $processor->parseContent(
-                    '[format foreground="white" effects="bold" background="red"][sideways]  ' .
+                    '[format foreground="white" effects="bold" background="red"][sideways] ' .
                     $content . '%MIDDLE%[/sideways][/format]'
                 );
                 break;
             case "info":
                 $content = $processor->parseContent(
-                    '[format foreground="white" effects="bold" background="blue"][sideways]  ' .
+                    '[format foreground="white" effects="bold" background="blue"][sideways] ' .
                     $content . '%MIDDLE%[/sideways][/format]'
                 );
                 break;
