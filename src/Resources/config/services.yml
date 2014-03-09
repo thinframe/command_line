@@ -1,34 +1,34 @@
 services:
     #abstract services
     cli.abstract.bash_output_driver:
-        class: 'ThinFrame\CommandLine\IO\Drivers\BashOutputDriver'
+        class: 'ThinFrame\CommandLine\IO\Driver\BashOutputDriver'
         abstact: true
 
     cli.abstract.bash_input_driver:
-        class: 'ThinFrame\CommandLine\IO\Drivers\BashInputDriver'
+        class: 'ThinFrame\CommandLine\IO\Driver\BashInputDriver'
         arguments: ['@cli.output_driver']
         abstract: true
 
     cli.abstract.arguments_container:
         class: 'ThinFrame\CommandLine\IO\ArgumentsContainer'
-        factory_class: 'ThinFrame\CommandLine\IO\Helpers\ArgumentsContainerFactory'
+        factory_class: 'ThinFrame\CommandLine\IO\Helper\ArgumentsContainerFactory'
         factory_method: 'createFromServerArgv'
 
     cli.shortcodes_processor:
-        class: 'ThinFrame\Foundation\Helpers\ShortCodesProcessor'
+        class: 'ThinFrame\Foundation\Helper\ShortCodesProcessor'
 
     cli.commander:
-        class: 'ThinFrame\CommandLine\Commands\Commander'
+        class: 'ThinFrame\CommandLine\Command\Commander'
 
     cli.commands.compgen:
-        class: 'ThinFrame\CommandLine\Commands\CompgenCommand'
+        class: 'ThinFrame\CommandLine\Command\CompgenCommand'
         arguments: ['@cli.commander']
         tags:
             - { name: 'cli.command' }
 
     #concrete services
     cli.output_formatter.shortcodes:
-        class: 'ThinFrame\CommandLine\IO\Formatters\ShortCodesFormatter'
+        class: 'ThinFrame\CommandLine\IO\Formatter\ShortCodesFormatter'
         arguments: ['@cli.shortcodes_processor']
 
     cli.output_driver:

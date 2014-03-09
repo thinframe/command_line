@@ -7,7 +7,7 @@
  * @license   MIT license (see the license file in the root directory)
  */
 
-namespace ThinFrame\CommandLine\IO\Drivers;
+namespace ThinFrame\CommandLine\IO\Driver;
 
 use ThinFrame\CommandLine\IO\OutputDriverInterface;
 use ThinFrame\CommandLine\IO\OutputFormatterInterface;

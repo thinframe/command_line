@@ -7,9 +7,9 @@
  * @license   MIT license (see the license file in the root directory)
  */
 
-namespace ThinFrame\CommandLine\IO\Constants;
+namespace ThinFrame\CommandLine\IO\Constant;
 
-use ThinFrame\Foundation\DataTypes\AbstractEnum;
+use ThinFrame\Foundation\DataType\AbstractEnum;
 
 /**
  * Class TextEffect

@@ -7,10 +7,10 @@
  * @license   MIT license (see the license file in the root directory)
  */
 
-namespace ThinFrame\CommandLine\Commands\Processors;
+namespace ThinFrame\CommandLine\Command\Processor;
 
-use ThinFrame\CommandLine\Commands\AbstractCommand;
-use ThinFrame\CommandLine\Commands\AbstractCommandProcessor;
+use ThinFrame\CommandLine\Command\AbstractCommand;
+use ThinFrame\CommandLine\Command\AbstractCommandProcessor;
 
 /**
  * Class DescriptionsGathererProcessor

@@ -7,16 +7,16 @@
  * @license   MIT license (see the license file in the root directory)
  */
 
-namespace ThinFrame\CommandLine\IO\Formatters;
+namespace ThinFrame\CommandLine\IO\Formatter;
 
-use ThinFrame\CommandLine\IO\Constants\BackgroundColor;
-use ThinFrame\CommandLine\IO\Constants\ForegroundColor;
-use ThinFrame\CommandLine\IO\Constants\TextEffect;
-use ThinFrame\CommandLine\IO\Constants\TextReset;
-use ThinFrame\CommandLine\IO\Helpers\Bash;
-use ThinFrame\CommandLine\IO\Helpers\StringTransformer;
+use ThinFrame\CommandLine\IO\Constant\BackgroundColor;
+use ThinFrame\CommandLine\IO\Constant\ForegroundColor;
+use ThinFrame\CommandLine\IO\Constant\TextEffect;
+use ThinFrame\CommandLine\IO\Constant\TextReset;
+use ThinFrame\CommandLine\IO\Helper\Bash;
+use ThinFrame\CommandLine\IO\Helper\StringTransformer;
 use ThinFrame\CommandLine\IO\OutputFormatterInterface;
-use ThinFrame\Foundation\Helpers\ShortCodesProcessor;
+use ThinFrame\Foundation\Helper\ShortCodesProcessor;
 
 /**
  * Class ShortCodesFormatter

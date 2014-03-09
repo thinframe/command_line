@@ -7,8 +7,8 @@ $commandLineApp->make();
 
 $commander = $commandLineApp->getContainer()->get('cli.commander');
 
-/* @var $commander \ThinFrame\CommandLine\Commands\Commander */
-class DummyCommand extends \ThinFrame\CommandLine\Commands\AbstractCommand
+/* @var $commander \ThinFrame\CommandLine\Command\Commander */
+class DummyCommand extends \ThinFrame\CommandLine\Command\AbstractCommand
 {
     /**
      * @var string
@@ -75,10 +75,10 @@ $debug = new \DummyCommand('debug');
 $commander->addCommand($server);
 $commander->addCommand($help);
 $commander->addCommand($debug);
-$commander->addCommand(new \ThinFrame\CommandLine\Commands\CompgenCommand($commander));
+$commander->addCommand(new \ThinFrame\CommandLine\Command\CompgenCommand($commander));
 
 $commander->executeProcessor(
-    $processor = new \ThinFrame\CommandLine\Commands\Processors\CommandFinderProcessor(
+    $processor = new \ThinFrame\CommandLine\Command\Processor\CommandFinderProcessor(
         $commandLineApp->getContainer()->get('cli.arguments_container')
     )
 );

@@ -7,7 +7,7 @@
  * @license   MIT license (see the license file in the root directory)
  */
 
-namespace ThinFrame\CommandLine\IO\Helpers;
+namespace ThinFrame\CommandLine\IO\Helper;
 
 use ThinFrame\CommandLine\IO\ArgumentsContainer;
 

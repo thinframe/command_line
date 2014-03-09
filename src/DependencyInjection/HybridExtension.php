@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\DefinitionDecorator;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\DependencyInjection\Reference;
-use ThinFrame\Foundation\Exceptions\LogicException;
+use ThinFrame\Foundation\Exception\LogicException;
 
 /**
  * Class HybridExtension

@@ -7,7 +7,7 @@
  * @license   MIT license (see the license file in the root directory)
  */
 
-namespace ThinFrame\CommandLine\Commands;
+namespace ThinFrame\CommandLine\Command;
 
 /**
  * Class AbstractCommandProcessor

@@ -7,10 +7,10 @@
  * @license   MIT license (see the license file in the root directory)
  */
 
-namespace ThinFrame\CommandLine\IO\Helpers;
+namespace ThinFrame\CommandLine\IO\Helper;
 
-use ThinFrame\Foundation\Constants\OS;
-use ThinFrame\Foundation\Helpers\System;
+use ThinFrame\Foundation\Constant\OS;
+use ThinFrame\Foundation\Helper\System;
 
 /**
  * Class Bash

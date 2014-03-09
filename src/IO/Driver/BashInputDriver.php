@@ -7,12 +7,12 @@
  * @license   MIT license (see the license file in the root directory)
  */
 
-namespace ThinFrame\CommandLine\IO\Drivers;
+namespace ThinFrame\CommandLine\IO\Driver;
 
 use ThinFrame\CommandLine\IO\ArgumentsContainerInterface;
 use ThinFrame\CommandLine\IO\InputDriverInterface;
 use ThinFrame\CommandLine\IO\OutputDriverInterface;
-use ThinFrame\Pcntl\Helpers\Exec;
+use ThinFrame\Pcntl\Helper\Exec;
 
 /**
  * Class BashInputDriver

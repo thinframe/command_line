@@ -7,13 +7,13 @@
  * @license   MIT license (see the license file in the root directory)
  */
 
-namespace ThinFrame\CommandLine\IO\Helpers;
+namespace ThinFrame\CommandLine\IO\Helper;
 
-use ThinFrame\CommandLine\IO\Constants\BackgroundColor;
-use ThinFrame\CommandLine\IO\Constants\ForegroundColor;
-use ThinFrame\CommandLine\IO\Constants\TextEffect;
-use ThinFrame\CommandLine\IO\Constants\TextReset;
-use ThinFrame\Foundation\Exceptions\InvalidArgumentException;
+use ThinFrame\CommandLine\IO\Constant\BackgroundColor;
+use ThinFrame\CommandLine\IO\Constant\ForegroundColor;
+use ThinFrame\CommandLine\IO\Constant\TextEffect;
+use ThinFrame\CommandLine\IO\Constant\TextReset;
+use ThinFrame\Foundation\Exception\InvalidArgumentException;
 
 /**
  * Class StringTransformer
