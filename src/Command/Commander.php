@@ -1,8 +1,6 @@
 <?php
 
 /**
- * src/Commands/Commander.php
- *
  * @author    Sorin Badea <sorin.badea91@gmail.com>
  * @license   MIT license (see the license file in the root directory)
  */
@@ -13,7 +11,7 @@ use ThinFrame\CommandLine\IO\InputDriverAwareTrait;
 use ThinFrame\CommandLine\IO\OutputDriverAwareTrait;
 
 /**
- * Class Commander
+ * Commander
  *
  * @package ThinFrame\CommandLine\Commands
  * @since   0.3

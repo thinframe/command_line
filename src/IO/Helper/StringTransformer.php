@@ -1,8 +1,6 @@
 <?php
 
 /**
- * src/IO/Helpers/StringTransformer.php
- *
  * @author    Sorin Badea <sorin.badea91@gmail.com>
  * @license   MIT license (see the license file in the root directory)
  */
@@ -16,8 +14,6 @@ use ThinFrame\CommandLine\IO\Constant\TextReset;
 use ThinFrame\Foundation\Exception\InvalidArgumentException;
 
 /**
- * Class StringTransformer
- *
  * @package ThinFrame\CommandLine\IO\Helpers
  * @since   0.2
  */

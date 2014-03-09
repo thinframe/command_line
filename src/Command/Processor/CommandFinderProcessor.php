@@ -1,8 +1,6 @@
 <?php
 
 /**
- * src/Commands/Processors/CommandFinderProcessor.php
- *
  * @author    Sorin Badea <sorin.badea91@gmail.com>
  * @license   MIT license (see the license file in the root directory)
  */
@@ -14,7 +12,7 @@ use ThinFrame\CommandLine\Command\AbstractCommandProcessor;
 use ThinFrame\CommandLine\IO\ArgumentsContainerInterface;
 
 /**
- * Class CommandFinderProcessor
+ * CommandFinderProcessor
  *
  * @package ThinFrame\CommandLine\Commands\Processors
  * @since   0.3

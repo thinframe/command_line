@@ -1,8 +1,6 @@
 <?php
 
 /**
- * src/IO/Formatters/ShortCodesFormatter.php
- *
  * @author    Sorin Badea <sorin.badea91@gmail.com>
  * @license   MIT license (see the license file in the root directory)
  */
@@ -86,7 +84,7 @@ class ShortCodesFormatter implements OutputFormatterInterface
                 foreach ($effects as $effect) {
                     $effect = strtoupper($effect);
                     if ($textEffects->containsKey($effect)) {
-                        $options[] = $textEffects->get($effect)->get();
+                        $options[] = $textEffects->get($effect)->getOrElse(null);
                     }
                 }
 

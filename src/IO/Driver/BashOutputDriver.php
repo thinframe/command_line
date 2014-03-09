@@ -1,8 +1,6 @@
 <?php
 
 /**
- * src/IO/Drivers/BashOutputDriver.php
- *
  * @author    Sorin Badea <sorin.badea91@gmail.com>
  * @license   MIT license (see the license file in the root directory)
  */
@@ -13,7 +11,7 @@ use ThinFrame\CommandLine\IO\OutputDriverInterface;
 use ThinFrame\CommandLine\IO\OutputFormatterInterface;
 
 /**
- * Class BashOutputDriver
+ * BashOutputDriver
  *
  * @package ThinFrame\CommandLine\IO\Drivers
  * @since   0.3

@@ -28,6 +28,9 @@ CLI support for PHP applications.
 To enable bash completion support, `thinframe` binary must by installed in your system bin folder. To do this, just execute `thinframe-installer` from your composer bin folder.
 
 
-##Copyright
+##Contribuitors
 
-* MIT License - Sorin Badea <sorin.badea91@gmail.com>
+* Sorin Badea <sorin.badea91@gmail.com>
+
+##License
+* MIT License

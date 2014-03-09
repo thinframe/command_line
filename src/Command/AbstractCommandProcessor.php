@@ -1,8 +1,6 @@
 <?php
 
 /**
- * src/Commands/AbstractCommandProcessor.php
- *
  * @author    Sorin Badea <sorin.badea91@gmail.com>
  * @license   MIT license (see the license file in the root directory)
  */
@@ -10,7 +8,7 @@
 namespace ThinFrame\CommandLine\Command;
 
 /**
- * Class AbstractCommandProcessor
+ * AbstractCommandProcessor
  *
  * @package ThinFrame\CommandLine\Commands
  * @since   0.3

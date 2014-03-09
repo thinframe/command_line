@@ -1,8 +1,6 @@
 <?php
 
 /**
- * src/Commands/Processors/CompletionProcessor.php
- *
  * @author    Sorin Badea <sorin.badea91@gmail.com>
  * @license   MIT license (see the license file in the root directory)
  */
@@ -15,7 +13,7 @@ use ThinFrame\CommandLine\Command\AbstractCommandProcessor;
 use ThinFrame\CommandLine\IO\ArgumentsContainerInterface;
 
 /**
- * Class CompletionProcessor
+ * CompletionProcessor
  *
  * @package ThinFrame\CommandLine\Commands\Processors
  * @since   0.3
@@ -59,10 +57,9 @@ class CompletionProcessor extends AbstractCommandProcessor
     {
         if ($this->currentIndex == $depth) {
             $this->process($command);
-        } elseif ($depth < $this->currentIndex && $command->getArgument(
-            ) == $this->argumentsContainer->getArgumentsAtIndex(
-                $depth + 2
-            )
+        } elseif (
+            $depth < $this->currentIndex
+            && $command->getArgument() == $this->argumentsContainer->getArgumentsAtIndex($depth + 2)
         ) {
             foreach ($command->getChildCommands() as $childCommand) {
                 $this->visit($childCommand, $depth + 1);
@@ -78,7 +75,7 @@ class CompletionProcessor extends AbstractCommandProcessor
      *
      * @return mixed
      */
-    function process(AbstractCommand $command, $depth = 0)
+    public function process(AbstractCommand $command, $depth = 0)
     {
         if (is_null($this->argumentsContainer->getArgumentsAtIndex($this->currentIndex + 2))) {
             $this->words[] = $command->getArgument();
