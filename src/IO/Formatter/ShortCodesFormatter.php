@@ -93,14 +93,19 @@ class ShortCodesFormatter implements OutputFormatterInterface
                 $content = StringTransformer::transformText($content, $options);
                 break;
             case "center":
+                //TODO: handle content that is longer that window width
                 $sizes   = Bash::getScreenSizes();
                 $content = str_pad($content, $sizes['width'], " ", STR_PAD_BOTH);
                 break;
             case "sideways":
-                $sizes   = Bash::getScreenSizes();
+                $sizes = Bash::getScreenSizes();
+                if (($width = ($sizes['width'] - strlen(Bash::removeStyles($content)) + 6)) <= 0) {
+                    $width = (strlen(Bash::removeStyles($content)) / $sizes['width'] * $sizes['width'])-strlen(Bash::removeStyles($content));
+                }
+
                 $content = str_replace(
                     "%MIDDLE%",
-                    str_repeat(" ", $sizes['width'] - strlen(Bash::removeStyles($content)) + 6),
+                    str_repeat(" ", $width),
                     $content
                 );
                 break;
