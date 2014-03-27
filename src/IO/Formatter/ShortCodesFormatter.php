@@ -93,19 +93,17 @@ class ShortCodesFormatter implements OutputFormatterInterface
                 $content = StringTransformer::transformText($content, $options);
                 break;
             case "center":
-                //TODO: handle content that is longer that window width
-                $sizes   = Bash::getScreenSizes();
-                $content = str_pad($content, $sizes['width'], " ", STR_PAD_BOTH);
+                $content = str_pad(
+                    $content,
+                    $this->computeSpacing(strlen(Bash::removeStyles($content))),
+                    " ",
+                    STR_PAD_BOTH
+                );
                 break;
             case "sideways":
-                $sizes = Bash::getScreenSizes();
-                if (($width = ($sizes['width'] - strlen(Bash::removeStyles($content)) + 6)) <= 0) {
-                    $width = (strlen(Bash::removeStyles($content)) / $sizes['width'] * $sizes['width'])-strlen(Bash::removeStyles($content));
-                }
-
                 $content = str_replace(
                     "%MIDDLE%",
-                    str_repeat(" ", $width),
+                    str_repeat(" ", $this->computeSpacing(strlen(Bash::removeStyles($content)))),
                     $content
                 );
                 break;
@@ -142,5 +140,25 @@ class ShortCodesFormatter implements OutputFormatterInterface
     public function format($message)
     {
         return $this->shortCodesProcessor->parseContent($message);
+    }
+
+    /**
+     * Compute the spacing necessary to display a row
+     *
+     * @param $contentLength
+     *
+     * @return int
+     */
+    public function computeSpacing($contentLength)
+    {
+        extract(Bash::getScreenSizes());
+
+        if ($width == 0) {
+            $width = 300;
+        }
+
+        return ((intval(
+                    $contentLength / $width
+                ) + ($contentLength % $width > 0 ? 1 : 0)) * $width) - $contentLength + 7;
     }
 }

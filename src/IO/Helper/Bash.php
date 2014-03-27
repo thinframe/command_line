@@ -42,7 +42,7 @@ class Bash
     public static function getScreenSizes()
     {
         if (!(System::getOperatingSystem()->equals(OS::DARWIN) || System::getOperatingSystem()->equals(OS::LINUX))) {
-            return ['width' => 100, 'height' => 100];
+            return ['width' => 0, 'height' => 0];
         }
         preg_match_all("/rows.([0-9]+);.columns.([0-9]+);/", strtolower(exec('stty -a |grep columns')), $output);
         if (sizeof($output) == 3) {
@@ -52,8 +52,8 @@ class Bash
             );
         } else {
             return array(
-                "width"  => 100,
-                "height" => 100
+                "width"  => 0,
+                "height" => 0
             );
         }
     }
