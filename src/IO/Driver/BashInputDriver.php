@@ -82,7 +82,7 @@ class BashInputDriver implements InputDriverInterface
     {
         $result = Exec::viaPipe('bash -c \'read -s password && echo $password\'');
 
-        return trim($result['stdOut']);
+        return $result->getStdOut();
     }
 
     /**
