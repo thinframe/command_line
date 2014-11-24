@@ -63,7 +63,9 @@ class Commander
      */
     public function setCommands(array $commands)
     {
-        $this->commands = $commands;
+        foreach ($commands as $command) {
+            $this->addCommand($command);
+        }
     }
 
     /**

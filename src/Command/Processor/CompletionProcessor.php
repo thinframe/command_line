@@ -42,7 +42,7 @@ class CompletionProcessor extends AbstractCommandProcessor
     public function __construct(ArgumentsContainerInterface $argumentsContainer)
     {
         $this->argumentsContainer = $argumentsContainer;
-        $this->currentIndex       = $argumentsContainer->getOptionValue('current') - 1;
+        $this->currentIndex       = $argumentsContainer->getOption('current') - 1;
     }
 
     /**
@@ -59,7 +59,7 @@ class CompletionProcessor extends AbstractCommandProcessor
             $this->process($command);
         } elseif (
             $depth < $this->currentIndex
-            && $command->getArgument() == $this->argumentsContainer->getArgumentsAtIndex($depth + 2)
+            && $command->getArgument() == $this->argumentsContainer->getArgumentAtIndex($depth + 2)
         ) {
             foreach ($command->getChildCommands() as $childCommand) {
                 $this->visit($childCommand, $depth + 1);
@@ -77,11 +77,11 @@ class CompletionProcessor extends AbstractCommandProcessor
      */
     public function process(AbstractCommand $command, $depth = 0)
     {
-        if (is_null($this->argumentsContainer->getArgumentsAtIndex($this->currentIndex + 2))) {
+        if (is_null($this->argumentsContainer->getArgumentAtIndex($this->currentIndex + 2))) {
             $this->words[] = $command->getArgument();
         } elseif (StaticStringy::startsWith(
             $command->getArgument(),
-            $this->argumentsContainer->getArgumentsAtIndex($this->currentIndex + 2)
+            $this->argumentsContainer->getArgumentAtIndex($this->currentIndex + 2)
         )
         ) {
             $this->words[] = $command->getArgument();

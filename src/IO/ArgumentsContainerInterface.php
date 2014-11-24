@@ -22,7 +22,7 @@ interface ArgumentsContainerInterface
      *
      * @return boolean
      */
-    public function isFlaggedWith($flag);
+    public function hasFlag($flag);
 
     /**
      * Get all provided flags
@@ -47,7 +47,7 @@ interface ArgumentsContainerInterface
      *
      * @return boolean
      */
-    public function isOptionProvided($optionName);
+    public function hasOption($optionName);
 
     /**
      * Get options
@@ -63,7 +63,7 @@ interface ArgumentsContainerInterface
      *
      * @return string
      */
-    public function getOptionValue($optionName);
+    public function getOption($optionName);
 
     /**
      * Set provided options
@@ -81,7 +81,7 @@ interface ArgumentsContainerInterface
      *
      * @return boolean
      */
-    public function isArgumentsProvided($argument);
+    public function hasArgument($argument);
 
     /**
      * Get the provided argument at a specific index
@@ -90,7 +90,7 @@ interface ArgumentsContainerInterface
      *
      * @return string|null
      */
-    public function getArgumentsAtIndex($index);
+    public function getArgumentAtIndex($index);
 
     /**
      * Get arguments count
@@ -98,6 +98,12 @@ interface ArgumentsContainerInterface
      * @return int
      */
     public function getArgumentsCount();
+
+    /**
+     * Get all provided arguments
+     * @return array
+     */
+    public function getArguments();
 
     /**
      * Set arguments

@@ -111,7 +111,7 @@ class ArgumentsContainer implements ArgumentsContainerInterface
      *
      * @return boolean
      */
-    public function isFlaggedWith($flag)
+    public function hasFlag($flag)
     {
         return in_array($flag, $this->flags);
     }
@@ -147,7 +147,7 @@ class ArgumentsContainer implements ArgumentsContainerInterface
      *
      * @return boolean
      */
-    public function isOptionProvided($optionName)
+    public function hasOption($optionName)
     {
         return isset($this->options[$optionName]);
     }
@@ -169,9 +169,9 @@ class ArgumentsContainer implements ArgumentsContainerInterface
      *
      * @return string
      */
-    public function getOptionValue($optionName)
+    public function getOption($optionName)
     {
-        return $this->isOptionProvided($optionName) ? $this->options[$optionName] : null;
+        return $this->hasOption($optionName) ? $this->options[$optionName] : null;
     }
 
     /**
@@ -195,7 +195,7 @@ class ArgumentsContainer implements ArgumentsContainerInterface
      *
      * @return boolean
      */
-    public function isArgumentsProvided($argument)
+    public function hasArgument($argument)
     {
         return in_array($argument, $this->arguments);
     }
@@ -207,7 +207,7 @@ class ArgumentsContainer implements ArgumentsContainerInterface
      *
      * @return string|null
      */
-    public function getArgumentsAtIndex($index)
+    public function getArgumentAtIndex($index)
     {
         return isset($this->arguments[$index]) ? $this->arguments[$index] : null;
     }
@@ -220,6 +220,16 @@ class ArgumentsContainer implements ArgumentsContainerInterface
     public function getArgumentsCount()
     {
         return count($this->arguments);
+    }
+
+    /**
+     * Get all provided arguments
+     *
+     * @return array
+     */
+    public function getArguments()
+    {
+        return $this->arguments;
     }
 
     /**

@@ -25,9 +25,9 @@ services:
         tags:
             - { name: 'cli.command' }
 
-    cli.output_formatter.shortcodes:
-        class: '%cli.output_formatter.shortcodes.class%'
-        arguments: ['@cli.shortcodes_processor']
+    cli.output_formatter.climate:
+        class: '%cli.output_formatter.climate.class%'
+        arguments: ['@cli.climate']
 
     cli.output_driver:
         class: '%cli.output_driver.class%'
@@ -38,3 +38,15 @@ services:
     cli.arguments_container:
         class: '%cli.arguments_container.class%'
 
+    cli.climate:
+        class: '%cli.climate.class%'
+        factory_class: '%cli.climate.factory.class%'
+        factory_method: 'getClimate'
+        arguments: ['%cli.climate.class%','@cli.climate.output']
+
+    cli.climate.writer:
+        class: '%cli.climate.writer.class%'
+
+    cli.climate.output:
+        class: '%cli.climate.output.class%'
+        arguments: ['@cli.climate.writer']

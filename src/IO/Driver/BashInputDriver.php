@@ -96,11 +96,15 @@ class BashInputDriver implements InputDriverInterface
      */
     public function readChoice($question, array $variants, $errorMessage = 'Invalid input')
     {
+        $variantsBackup = $variants;
+        $variants[0]    = '<bold>' . $variants[0] . '</bold>';
         while (true) {
             $this->outputDriver->writeLine($question . ' [' . implode(', ', $variants) . ']');
             $response = $this->readLine();
             if (in_array($response, $variants)) {
                 return $response;
+            } elseif ($response == '') {
+                return $variantsBackup[0];
             }
             $this->outputDriver->writeLine($errorMessage);
         }
@@ -117,7 +121,7 @@ class BashInputDriver implements InputDriverInterface
      */
     public function prompt($question)
     {
-        $this->outputDriver->write($question);
+        $this->outputDriver->write($question . ' ');
 
         return $this->readLine();
     }

@@ -14,10 +14,7 @@ CLI support for PHP applications.
 * Bash integration (`/usr/bin` command and completion support)
 * Integration with Symfony2 DiC
 * Input/Output support
-* Styled output using shortcodes
-    * `[format foreground='red' background='white' effects='bold blink']Your text[/format]`
-    * `[center]Your text[/center]`
-    * `[sideways]Some service %MIDDLE% Running[/sideways]`
+* Styled output using xml tags (check CLImate documentation)
 * Check the `examples` folder for more details.
 
 ##Installation

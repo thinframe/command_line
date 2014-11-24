@@ -58,7 +58,7 @@ class CommandFinderProcessor extends AbstractCommandProcessor
      */
     protected function process(AbstractCommand $command, $dept)
     {
-        if ($command->getArgument() != $this->argumentsContainer->getArgumentsAtIndex($dept)) {
+        if ($command->getArgument() != $this->argumentsContainer->getArgumentAtIndex($dept)) {
             return;
         }
         if (count($command->getChildCommands()) == 0) {

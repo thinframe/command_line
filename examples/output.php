@@ -10,14 +10,10 @@ $outputDriver = $commandLineApp->getContainer()->get('cli.output_driver');
 
 $outputDriver->writeLine("Hello world!");
 
-$outputDriver->writeLine("[info]You will be amazed[/info]");
+$outputDriver->writeLine("<info>You will be amazed</info>");
 
-$outputDriver->writeLine("[error]... or not[/error]");
+$outputDriver->writeLine("<error>... or not</error>");
 
 $outputDriver->writeLine(
-    "[format foreground='cyan' background='black' effects='bold underline']... but let's check this out first![/format]"
+    "<cyan><background_black><bold><underline><blink>... but let's check this out first!</blink></underline></bold></background_black></cyan>"
 );
-
-$outputDriver->writeLine("[center]Embrace it[/center]");
-
-$outputDriver->write("[sideways]Or ... %MIDDLE% FORK IT  [/sideways]");

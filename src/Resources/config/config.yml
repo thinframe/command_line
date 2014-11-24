@@ -6,10 +6,14 @@ parameters:
     cli.shortcodes_processor.class: 'ThinFrame\Foundation\Helper\ShortCodesProcessor'
     cli.commander.class: 'ThinFrame\CommandLine\Command\Commander'
     cli.commands.compgen.class: 'ThinFrame\CommandLine\Command\CompgenCommand'
-    cli.output_formatter.shortcodes.class: 'ThinFrame\CommandLine\IO\Formatter\ShortCodesFormatter'
+    cli.output_formatter.climate.class: 'ThinFrame\CommandLine\IO\Formatter\ClimateFormatter'
     cli.output_driver.class: 'ThinFrame\CommandLine\IO\OutputDriverInterface'
     cli.input_driver.class: 'ThinFrame\CommandLine\IO\InputDriverInterface'
     cli.arguments_container.class: 'ThinFrame\CommandLine\IO\ArgumentsContainerInterface'
+    cli.climate.writer.class: 'ThinFrame\CommandLine\IO\Formatter\EchoWriter'
+    cli.climate.output.class: 'League\CLImate\Util\Output'
+    cli.climate.class: 'League\CLImate\CLImate'
+    cli.climate.factory.class: 'ThinFrame\CommandLine\IO\Helper\ClimateFactory'
 
 command_line:
     io:
@@ -17,8 +21,9 @@ command_line:
         output_driver_service: 'cli.abstract.bash_output_driver'
         arguments_container_service: 'cli.abstract.arguments_container'
         output_formatters:
-            - {service: 'cli.output_formatter.shortcodes'}
+            - {service: 'cli.output_formatter.climate'}
     commands:
         service: 'cli.commander'
         parent_tag: 'cli.command'
         child_tag: 'cli.child_command'
+
