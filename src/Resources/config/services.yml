@@ -1,0 +1,52 @@
+services:
+    cli.abstract.bash_output_driver:
+        class: '%cli.abstract.bash_output_driver.class%'
+        abstact: true
+
+    cli.abstract.bash_input_driver:
+        class: '%cli.abstract.bash_input_driver.class%'
+        arguments: ['@cli.output_driver']
+        abstract: true
+
+    cli.abstract.arguments_container:
+        class: '%cli.abstract.arguments_container.class%'
+        factory_class: '%cli.abstract.arguments_container.factory.class%'
+        factory_method: 'createFromServerArgv'
+
+    cli.shortcodes_processor:
+        class: '%cli.shortcodes_processor.class%'
+
+    cli.commander:
+        class: '%cli.commander.class%'
+
+    cli.commands.compgen:
+        class: '%cli.commands.compgen.class%'
+        arguments: ['@cli.commander']
+        tags:
+            - { name: 'cli.command' }
+
+    cli.output_formatter.climate:
+        class: '%cli.output_formatter.climate.class%'
+        arguments: ['@cli.climate']
+
+    cli.output_driver:
+        class: '%cli.output_driver.class%'
+
+    cli.input_driver:
+        class: '%cli.input_driver.class%'
+
+    cli.arguments_container:
+        class: '%cli.arguments_container.class%'
+
+    cli.climate:
+        class: '%cli.climate.class%'
+        factory_class: '%cli.climate.factory.class%'
+        factory_method: 'getClimate'
+        arguments: ['%cli.climate.class%','@cli.climate.output']
+
+    cli.climate.writer:
+        class: '%cli.climate.writer.class%'
+
+    cli.climate.output:
+        class: '%cli.climate.output.class%'
+        arguments: ['@cli.climate.writer']

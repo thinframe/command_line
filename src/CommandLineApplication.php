@@ -1,83 +1,104 @@
 <?php
 
 /**
- * /src/CommandLineApplication.php
- *
- * @copyright 2013 Sorin Badea <sorin.badea91@gmail.com>
+ * @author    Sorin Badea <sorin.badea91@gmail.com>
  * @license   MIT license (see the license file in the root directory)
  */
 
 namespace ThinFrame\CommandLine;
 
+use PhpCollection\Map;
 use ThinFrame\Applications\AbstractApplication;
-use ThinFrame\Applications\DependencyInjection\AwareDefinition;
 use ThinFrame\Applications\DependencyInjection\ContainerConfigurator;
-use ThinFrame\CommandLine\DependencyInjection\CommandsCompilerPass;
+use ThinFrame\Applications\DependencyInjection\InterfaceInjectionRule;
+use ThinFrame\Applications\DependencyInjection\TraitInjectionRule;
+use ThinFrame\CommandLine\DependencyInjection\HybridExtension;
 
 /**
- * Class CommandLineApplication
+ * CommandLineApplication
  *
  * @package ThinFrame\CommandLine
- * @since   0.2
+ * @since   0.3
  */
 class CommandLineApplication extends AbstractApplication
 {
-    /**
-     * initialize configurator
-     *
-     * @param ContainerConfigurator $configurator
-     *
-     * @return mixed
-     */
-    public function initializeConfigurator(ContainerConfigurator $configurator)
-    {
-        $configurator->addCompilerPass(new CommandsCompilerPass());
-
-        $configurator->addAwareDefinition(
-            new AwareDefinition(
-                '\ThinFrame\CommandLine\DependencyInjection\OutputDriverAwareTrait',
-                'setOutputDriver',
-                'thinframe.cli.output_driver'
-            )
-        );
-        $configurator->addAwareDefinition(
-            new AwareDefinition(
-                '\ThinFrame\CommandLine\DependencyInjection\InputDriverAwareTrait',
-                'setInputDriver',
-                'thinframe.cli.input_driver'
-            )
-        );
-    }
-
     /**
      * Get application name
      *
      * @return string
      */
-    public function getApplicationName()
+    public function getName()
     {
-        return 'ThinFrameCommandLine';
+        return $this->reflector->getShortName();
     }
 
     /**
-     * Get configuration files
-     *
-     * @return mixed
-     */
-    public function getConfigurationFiles()
-    {
-        return [
-            'resources/services.yml'
-        ];
-    }
-
-    /**
-     * Get parent applications
+     * Get application parents
      *
      * @return AbstractApplication[]
      */
-    protected function getParentApplications()
+    public function getParents()
     {
         return [];
+    }
+
+    /**
+     * Set different options for the container configurator
+     *
+     * @param ContainerConfigurator $configurator
+     */
+    protected function setConfiguration(ContainerConfigurator $configurator)
+    {
+        $configurator->addResources(
+            [
+                'Resources/config/services.yml',
+                'Resources/config/config.yml'
+            ]
+        );
+
+        $configurator->addExtension($hybridExtension = new HybridExtension());
+        $configurator->addCompilerPass($hybridExtension);
+
+        $configurator->addInjectionRule(
+            new TraitInjectionRule(
+                '\ThinFrame\CommandLine\IO\OutputDriverAwareTrait',
+                'cli.output_driver',
+                'setOutputDriver'
+            )
+        );
+
+        $configurator->addInjectionRule(
+            new TraitInjectionRule(
+                '\ThinFrame\CommandLine\IO\InputDriverAwareTrait',
+                'cli.input_driver',
+                'setInputDriver'
+            )
+        );
+
+        $configurator->addInjectionRule(
+            new InterfaceInjectionRule(
+                '\ThinFrame\CommandLine\IO\OutputDriverAwareInterface',
+                'cli.output_driver',
+                'setOutputDriver'
+            )
+        );
+        $configurator->addInjectionRule(
+            new InterfaceInjectionRule(
+                '\ThinFrame\CommandLine\IO\InputDriverAwareInterface',
+                'cli.input_driver',
+                'setInputDriver'
+            )
+        );
+    }
+
+    /**
+     * Set application metadata
+     *
+     * @param Map $metadata
+     *
+     */
+    protected function setMetadata(Map $metadata)
+    {
+        //noop
     }
 }

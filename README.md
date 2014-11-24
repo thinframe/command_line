@@ -14,16 +14,20 @@ CLI support for PHP applications.
 * Bash integration (`/usr/bin` command and completion support)
 * Integration with Symfony2 DiC
 * Input/Output support
-* Styled output using shortcodes
-    * `[format foreground='red' background='white' effects='bold blink']Your text[/format]`
-    * `[center]Your text[/center]`
-    * `[sideways]Some service %MIDDLE% Running[/sideways]`
+* Styled output using xml tags (check CLImate documentation)
+* Check the `examples` folder for more details.
 
 ##Installation
 
 * Via composer: `composer require thinframe/command-line`
 * Via git: `git clone https://github.com/thinframe/command-line`
 
-##Copyright
+To enable bash completion support, `thinframe` binary must by installed in your system bin folder. To do this, just execute `thinframe-installer` from your composer bin folder.
 
-* MIT License - Sorin Badea <sorin.badea91@gmail.com>
+
+##Contribuitors
+
+* Sorin Badea <sorin.badea91@gmail.com>
+
+##License
+* MIT License
